@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: gainsboro;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.glide {
+  width: 100%;
+  padding: 20px;
+}
+
+.glide__slide {
+  width: 40%;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.glide__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.glide__slide:hover {
+  transform: translateZ(0) scale(1.05);
+  filter: brightness(0.9) saturate(0.95);
+  z-index: 5;
+}
+
+/* 自定义分页器样式 */
+.glide__bullets {
+  width: 30%;
+  position: relative;
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glide__bullet {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+  border: none;
+}
+
+.glide__bullet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.glide__bullet:hover {
+  transform: translateZ(0) scale(1.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.glide__bullet--active {
+  transform: translateZ(0) scale(1.3);
+}
+
+.glide__bullet--active::before {
+  transform: scale(1);
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+  0%, 100% {
+    transform: translateZ(0) scale(1.3);
+  }
+  50% {
+    transform: translateZ(0) scale(1.5);
+  }
+}
+
+.glide__bullet--active {
+  animation: pulse 2s infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .glide__slide {
+    width: 60%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glide__slide {
+    width: 80%;
+    height: 180px;
+  }
+}
+
+/* 加载动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-container {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* 自定义导航按钮 */
+.glide__arrow {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -25px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.glide__arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: scale(1.1);
+}
+
+.glide__arrow--left {
+  left: 20px;
+}
+
+.glide__arrow--right {
+  right: 20px;
+}
+
+/* 触摸反馈 */
+.glide.touching {
+  cursor: grabbing;
+}
+
+.glide.touching .glide__track {
+  transition: none;
+}
