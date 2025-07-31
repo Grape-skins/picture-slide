@@ -22,10 +22,10 @@ body {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); */
 }
 
 .glide {
@@ -39,7 +39,7 @@ body {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); */
   transform: translateZ(0);
   will-change: transform;
 }
@@ -155,7 +155,7 @@ body {
 }
 
 .carousel-container {
-  animation: fadeInUp 0.8s ease-out;
+  /* animation: fadeInUp 0.8s ease-out; */
 }
 
 /* 自定义导航按钮 */
